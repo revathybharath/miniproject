@@ -1,5 +1,7 @@
 Git + Netbeans for Mac
 
+Turns out, we don't need the Plug-In - which is probably why it wouldn't work earlier :)
+
 In Git Hub (MiniProject), click on the green 'Clone or download' button.
 
 Copy the link to the respository: https://github.com/getintotech/miniproject.git
