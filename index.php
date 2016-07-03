@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Group Project Blog</title>
+        <title>Blog Test Title Blog</title>
     
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
