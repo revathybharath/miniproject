@@ -10,7 +10,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Blog Test Title Blog</title>
-   
+        
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/blog-post.css" rel="stylesheet">
  
     </head>
     
