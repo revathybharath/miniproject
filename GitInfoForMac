@@ -18,7 +18,7 @@ Click next.
 In next tab, on drop down run-as menu, select ‘PHP Built-in Web Server’
 Click finish
 
-To test:
+To commit a change:
 Make a change to the code and save
 Go to Team->Commit
 (This is now saved locally)
@@ -29,4 +29,21 @@ Team->Remote->Push
 
 Go back to Git, your changes should show up in green!
 
-Let me know if this works!
+To pull a document from the repository:
+
+In Netbeans, go to
+Team->Remote->Pull
+Window called 'Pull from Remote Repository' will open
+Choose 'Select Configured Git Repository Location'
+origin: (add your use name)@github.com/getintotech/miniproject.git
+Click next
+Choose with file you want to pull (usually master)
+Click finish
+File should show up on left-hand menu in Netbeans
+Make changes as you wish
+Repeat the 'to commit a change' instructions from section above
+
+
+
+
+
