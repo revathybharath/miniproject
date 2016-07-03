@@ -1,31 +1,29 @@
 Git + Netbeans for Mac
 
-In Git Hub (MiniProject), click on Clone or download button.
+In Git Hub (MiniProject), click on the green 'Clone or download' button.
 
-Copy the link (https://github.com/getintotech/miniproject.git)
+Copy the link to the respository: https://github.com/getintotech/miniproject.git
 
 Open the terminal. Make sure you are in the directory where you project folder is located.
-
 Type:
 git clone https://github.com/getintotech/miniproject.git
 in the terminal
 
 In Netbeans, go to file -> new project
-Browse to the project folder and select your blog folder (basically resetting-up the project)
+Browse to the blog project folder and add it to netbeans (basically resetting-up the project)
 Click next.
 
 In next tab, on drop down run-as menu, select ‘PHP Built-in Web Server’
 Click finish
 
 To test:
-
 Make a change to the code and save
 Go to Team->Commit
 (This is now saved locally)
 
 To push it back to Git so everyone can see the changes,
 Team->Remote->Push
-(click next a few times)
+(click next a few times, not sure what all the extra info means)
 
 Go back to Git, your changes should show up in green!
 
