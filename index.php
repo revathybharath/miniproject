@@ -58,7 +58,7 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>Welcome to our amazing blog that has a commit from netbeans</h1>
+                <h1>Welcome to our amazing blog on bloggy stuff</h1>
 
               
 
