@@ -15,10 +15,12 @@
     
     <body>
     
-        <h1> Articles </h1>
-        <h1> New articles </h2>
-       
+        <h1> Welcome to the DevelopHer Guide to ...Osterley </h1>
+            <div> This blog is dedicated to the sights, smells and sounds of Osterley and the surrounding area.
+        <h2> Newest articles </h2>
+        <h2> Submit an article</h2>
         
-    
+        
+       
     </body>
 </html>
