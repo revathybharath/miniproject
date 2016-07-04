@@ -1,0 +1,159 @@
+#s-8689a650-93bc-425b-a68b-2002a1129207 > #backgroundBox {
+  background-color: transparent;
+  background-image: none;
+  position: absolute;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 > #alignmentBox {
+  position: relative;
+  margin: 0 auto;
+  width: 1024px;
+  min-width: 1024px;
+  min-height: 768px;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Paragraph_1 {
+  position: absolute;
+  top: 148px;
+  left: 52px;
+  width: 918px;
+  height: auto;
+  background-color: transparent;
+  background-image: none;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+  box-shadow: none;
+  text-shadow: none;
+  line-height: 18px;
+  font-size: 10.0pt;
+  font-family: Roboto-Regular,Arial;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Paragraph_1 .valign {
+  vertical-align: top;
+  text-align: left;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Paragraph_1 span {
+  color: #333333;
+  text-align: left;
+  text-decoration: none;
+  font-family: Roboto-Regular,Arial;
+  font-size: 10.0pt;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Paragraph_1 span#rtr-s-Paragraph_1_0 {
+  color: #333333;
+  text-align: left;
+  text-decoration: none;
+  font-family: Roboto-Regular,Arial;
+  font-size: 10.0pt;
+  line-height: 0px;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Text_2 {
+  position: absolute;
+  top: 76px;
+  left: 52px;
+  width: 916px;
+  height: 43px;
+  background-color: transparent;
+  background-image: none;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+  box-shadow: none;
+  text-shadow: none;
+  font-size: 16.0pt;
+  font-family: Roboto-Bold,Arial;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Text_2 .valign {
+  vertical-align: middle;
+  text-align: center;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Text_2 span {
+  color: #333333;
+  text-align: center;
+  text-decoration: none;
+  font-family: Roboto-Bold,Arial;
+  font-size: 16.0pt;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Text_2 span#rtr-s-Text_2_0 {
+  color: #333333;
+  text-align: left;
+  text-decoration: none;
+  font-family: Roboto-Bold,Arial;
+  font-size: 16.0pt;
+  line-height: 0px;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Text_3 {
+  position: absolute;
+  top: 114px;
+  left: 52px;
+  width: 918px;
+  height: 28px;
+  background-color: transparent;
+  background-image: none;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+  box-shadow: none;
+  text-shadow: none;
+  font-size: 10.0pt;
+  font-family: Roboto-Bold,Arial;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Text_3 .valign {
+  vertical-align: middle;
+  text-align: left;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Text_3 span {
+  color: #333333;
+  text-align: left;
+  text-decoration: none;
+  font-family: Roboto-Bold,Arial;
+  font-size: 10.0pt;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Text_3 span#rtr-s-Text_3_0 {
+  color: #333333;
+  text-align: left;
+  text-decoration: none;
+  font-family: Roboto-Bold,Arial;
+  font-size: 10.0pt;
+  line-height: 0px;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Input_1 {
+  position: absolute;
+  top: 583px;
+  left: 716px;
+  width: 212px;
+  height: 27px;
+  background-color: #FFFFFF;
+  background-image: none;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #C8C8C8;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #C8C8C8;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #C8C8C8;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #C8C8C8;
+  box-shadow: none;
+  text-shadow: none;
+  cursor: pointer;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Input_1 .valign {
+  vertical-align: middle;
+  line-height: 10.0pt;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 #s-Input_1 input {
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  font-family: Roboto-Regular,Arial;
+  font-size: 10.0pt;
+  text-shadow: none;
+}
+#s-8689a650-93bc-425b-a68b-2002a1129207 > #loadMark {
+  width: 1px;
+  visibility: hidden;
+  display: none;
+}

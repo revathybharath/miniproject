@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "canvasID": "s-8689a650-93bc-425b-a68b-2002a1129207",
+      "elementID": "s-Input_1",
+      "canvasURL": "screens/8689a650-93bc-425b-a68b-2002a1129207",
+      "scenario" : "",
+      "author": "Revathy",
+      "authorID" : 0,
+      "code": 1,
+      "parentCode": null,
+      "content": "Enable Edit option if the logged in user is Author of the post",
+      "timestamp": "1467652742826",
+      "date": "04-Jul-2016 18:19",
+      "fileName": "",
+      "isRead": true
+    }
+    ,{
+      "canvasID": "s-d12245cc-1680-458d-89dd-4f0d7fb22724",
+      "elementID": "s-Text_10",
+      "canvasURL": "screens/d12245cc-1680-458d-89dd-4f0d7fb22724",
+      "scenario" : "",
+      "author": "Revathy",
+      "authorID" : 0,
+      "code": 2,
+      "parentCode": null,
+      "content": "Once the user is logged in Sign In will be changed to Logout \"AuthorName\"",
+      "timestamp": "1467652834565",
+      "date": "04-Jul-2016 18:20",
+      "fileName": "",
+      "isRead": true
+    }
+    ,{
+      "canvasID": "s-d12245cc-1680-458d-89dd-4f0d7fb22724",
+      "elementID": "s-Text_11",
+      "canvasURL": "screens/d12245cc-1680-458d-89dd-4f0d7fb22724",
+      "scenario" : "",
+      "author": "Revathy",
+      "authorID" : 0,
+      "code": 3,
+      "parentCode": null,
+      "content": "Administration will be disabled the first time. If the logged in user is Admin then this link will be enabled",
+      "timestamp": "1467652901142",
+      "date": "04-Jul-2016 18:21",
+      "fileName": "",
+      "isRead": true
+    }
+  ]
+}
