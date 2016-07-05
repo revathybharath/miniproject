@@ -3,12 +3,12 @@
 namespace App;
 
 include 'DB/blog_DB.php';
-
-use function DB\read_article_id;
+//DB\
+use function read_article_id;
 
 
 function get_article_by_id($pdo, $id) {
-    read_article_id($pdo,$id);
+    return read_article_id($pdo,$id);
 }
 
 ?>
