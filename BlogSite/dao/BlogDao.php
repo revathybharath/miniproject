@@ -1,6 +1,6 @@
 <?php
 
-namespace BlogDB;
+namespace BlogDao;
 	
 //USER FUNCTIONS
 function read_user($pdo, $username) {
