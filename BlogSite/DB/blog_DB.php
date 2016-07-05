@@ -1,7 +1,7 @@
 <?php
 
-namespace DB;
-	
+//namespace DB;
+require_once 'model/Article.php';	
 //USER FUNCTIONS
 //function read_user($pdo, $username) {
 //	
@@ -17,8 +17,12 @@ namespace DB;
 function read_article_id($pdo, $ArticleId) {
 	$stmt = $pdo->prepare("SELECT * FROM article WHERE ArticleId = :ArticleId");
 	$stmt->execute(['ArticleId' => $ArticleId]);
-	$testing = $stmt->fetch();
-        echo "I am article id";
+	
+        $foundArticle = $stmt->fetch();
+         
+        $newArticle = new Article($foundArticle['ArticleId'], $foundArticle['CategoryId'], $foundArticle['UserId'], $foundArticle['PostTitle'], $foundArticle['CreatedOn'], $foundArticle['Content'], $foundArticle['RoleId']);
+        return $newArticle;
+  
         print_r($testing);
 }
 

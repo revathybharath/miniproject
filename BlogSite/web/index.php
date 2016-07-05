@@ -1,14 +1,14 @@
 
 <?php
 include 'common.php';
-include 'App/blog_app.php';
+include dirname(__FILE__).'/../App/blog_app.php';
 
 use function App\get_article_by_id;
 
 $testArticle = get_article_by_id($pdo, 1);
 
-echo $testArticle->getPostTitle();
-echo $testArticle->getContent();
+//echo $testArticle->getPostTitle();
+//echo $testArticle->getContent();
 
 ?>
 <!DOCTYPE html>

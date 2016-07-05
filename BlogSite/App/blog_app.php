@@ -2,9 +2,9 @@
 
 namespace App;
 
-include 'DB/blog_DB.php';
+include 'dao/BlogDao.php';
 //DB\
-use function read_article_id;
+use function BlogDao\read_article_id;
 
 
 function get_article_by_id($pdo, $id) {
