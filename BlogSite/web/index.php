@@ -3,8 +3,10 @@
 <?php
 include 'common.php';
 include dirname(__FILE__).'/../App/blog_app.php';
+
 use function App\get_article_by_id;
 $testArticle = get_article_by_id($pdo, 1);
+
 //echo $testArticle->getPostTitle();
 //echo $testArticle->getContent();
 ?>

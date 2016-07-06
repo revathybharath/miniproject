@@ -6,19 +6,33 @@ require_once '../model/AuthorisationRole.php';
 require_once '../model/Category.php';
 require_once '../model/User.php';
 
+//USER FUNCTIONS
+function read_user($pdo, $username) {
+
+}
 // CART FUNCTIONS
 function create_post($pdo, $new_article) {
-        $stmt = $pdo->prepare("INSERT INTO articles (PostTitle, Content) VALUES (:PostTitle, :Content)");
-        $stmt->bindValue(":PostTitle", $new_item['PostTitle']);
-        $stmt->bindValue(":Content", $new_item['Content']);
-        $stmt->execute();
+    $stmt = $pdo->prepare("INSERT INTO articles (PostTitle, Content) VALUES (:PostTitle, :Content)");
+    $stmt->bindValue(":PostTitle", $new_item['PostTitle']);
+    $stmt->bindValue(":Content", $new_item['Content']);
+    $stmt->execute();
 }
 
-function read_article_id($pdo, $article_id) {
-        $stmt = $pdo->prepare("SELECT * FROM articles WHERE id = :id");
-        $stmt->execute(['id' => $article_id]);
-        return $stmt->fetch();
+
+function read_article_id($pdo, $ArticleId) {
+	$stmt = $pdo->prepare("SELECT * FROM article WHERE ArticleId = :ArticleId");
+	$stmt->execute(['ArticleId' => $ArticleId]);
+        $foundArticle = $stmt->fetch();
+        //$newArticle = $obj = new Article($foundArticle['ArticleId'], $foundArticle['CategoryId'], $foundArticle['UserId'], $foundArticle['PostTitle'], $foundArticle['CreatedOn'], $foundArticle['Content'], $foundArticle['RoleId']);
+        //return $newArticle;
 }
+
+
+//function read_article_id($pdo, $article_id) {
+//    $stmt = $pdo->prepare("SELECT * FROM articles WHERE id = :id");
+//    $stmt->execute(['id' => $article_id]);
+//    return $stmt->fetch();
+//}
 
 function read_article_name($pdo, $article_title) {
         $stmt = $pdo->prepare("SELECT * FROM articles WHERE PostTitle = :PostTitle");
