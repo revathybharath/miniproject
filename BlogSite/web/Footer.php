@@ -1,5 +1,8 @@
+    
+    <br><br>
+    <hr>
     <div class="footer">
-      Footer content goes in here
+      © 2016 Osterley Guide ALL RIGHTS RESERVED
     </div>
   </body>
 </html>

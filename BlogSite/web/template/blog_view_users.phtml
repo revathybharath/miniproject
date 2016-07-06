@@ -1,0 +1,53 @@
+<div>
+ 
+<h1>
+Users
+</h1>
+
+<?php if (empty($users)): ?>
+    <p>No Users found.</p>
+<?php else: ?>
+    <table style="width:100%">
+        <tr>
+            <th hidden="true">User Id</th>
+            <th hidden="true">Password</th>
+            <th hidden="true">Role Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Is Active</th>
+            <th>Created On</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>        
+        <?php foreach ($users as $user): ?>
+        <tr>
+            <td hidden="true"><?php echo $user->getUserId() ?></td>
+            <td hidden="true"><?php echo $user->getPassword() ?></td>
+            <td hidden="true"><?php echo $user->getRoleId() ?></td>
+            <td><?php echo $user->getFirstName() ?></td>
+            <td><?php echo $user->getLastName() ?></td>
+            <td><?php echo $user->getEmail() ?></td>
+            <td><?php echo $user->getRoleName() ?></td>
+            <td align="center"><?php echo $user->getIsActive() ?></td>
+            <td><?php echo $user->getCreatedOn() ?></td>            
+            <td align="center"> 
+                <?php if ($user->getEmail()=='revathysaisindu@gmail.com'): ?>
+                    <p>EDIT</p>
+                <?php else: ?>
+                    <a href="Admin.php">EDIT</a>
+                <?php endif; ?>
+            </td>
+            <td align="center"> 
+                <?php if ($user->getEmail()=='revathysaisindu@gmail.com'): ?>
+                    <p>DELETE</p>
+                <?php else: ?>
+                    <a href="Admin.php">DELETE</a>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>        
+    </table>
+<?php endif; ?>    
+</div>

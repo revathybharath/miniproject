@@ -56,4 +56,6 @@ INSERT INTO `AuthorisationRole` (`Name`, `RoleDescription`) VALUES ('Author', 'U
 
 INSERT INTO `User` (`FirstName`, `LastName`, `Email`, `Password`, `IsActive`, `RoleId`) VALUES ('Revathy', 'Bharath', 'revathysaisindu@gmail.com', 'password', 1, 1);
 
+INSERT INTO `Category` (`Name`, `CategoryDescription`) VALUES ('Parks', 'Parks in Osterley');
+INSERT INTO `Category` (`Name`, `CategoryDescription`) VALUES ('Entertainment', 'Cinema, Theatre, Circus in Osterley');
 

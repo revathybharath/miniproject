@@ -1,0 +1,37 @@
+<div>
+ 
+<h1>
+Articles
+</h1>
+
+<?php if (empty($articles)): ?>
+    <p>No Users found.</p>
+<?php else: ?>
+    <table style="width:100%">
+        <tr>
+            <th hidden="true">Article Id</th>
+            <th hidden="true">Category Id</th>
+            <th hidden="true">User Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Created On</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>        
+        <?php foreach ($articles as $article): ?>
+        <tr>
+            <td hidden="true"><?php echo $article->getArticleId() ?></td>
+            <td hidden="true"><?php echo $article->getCategoryId() ?></td>
+            <td hidden="true"><?php echo $article->getUserId() ?></td>
+            <td><?php echo $article->getPostTitle() ?></td>
+            <td><?php echo $article->getAuthor() ?></td>
+            <td><?php echo $article->getCategoryName() ?></td>
+            <td><?php echo $article->getCreatedOn() ?></td>
+            <td align="center"><a href="Admin.php">EDIT</a></td>
+            <td align="center"><a href="Admin.php">DELETE</a></td>
+        </tr>
+        <?php endforeach; ?>        
+    </table>
+<?php endif; ?>    
+</div>
