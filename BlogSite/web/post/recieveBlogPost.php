@@ -20,3 +20,5 @@ $blg = new Article (1, 1, 1, $articleTitle, '2016-07-05 21:07:01', $articleData,
 //echo $blg -> getPostTitle();
 
 create_post($pdo,$blg);
+
+echo 'Post has been created!';
