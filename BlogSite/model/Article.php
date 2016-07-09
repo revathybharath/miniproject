@@ -7,16 +7,19 @@ class Article {
     private $PostTitle;
     private $CreatedOn;
     private $Content;
+    private $RoleId;
     private $Author;
     private $CategoryName;
 
-    function __construct($ArticleId, $CategoryId, $UserId, $PostTitle, $CreatedOn, $Content)
+    function __construct($ArticleId, $CategoryId, $UserId, $PostTitle, $CreatedOn, $Content, $RoleId)
     {
         $this->ArticleId = $ArticleId;
         $this->CategoryId = $CategoryId;
         $this->UserId = $UserId;
         $this->PostTitle = $PostTitle;
         $this->CreatedOn = $CreatedOn;
+        $this->RoleId = $RoleId;
+        $this->Content = $Content;
     }
 
     public function getArticleId()

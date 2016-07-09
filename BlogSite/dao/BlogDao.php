@@ -1,10 +1,10 @@
 <?php
 
 namespace BlogDao;
-require_once '../model/Article.php';
-require_once '../model/AuthorisationRole.php';
-require_once '../model/Category.php';
-require_once '../model/User.php';
+//require_once '../model/Article.php';
+//require_once '../model/AuthorisationRole.php';
+//require_once '../model/Category.php';
+//require_once '../model/User.php';
 
 //USER FUNCTIONS
 function read_user($pdo, $username) {
@@ -12,10 +12,24 @@ function read_user($pdo, $username) {
 }
 // CART FUNCTIONS
 function create_post($pdo, $new_article) {
-    $stmt = $pdo->prepare("INSERT INTO articles (PostTitle, Content) VALUES (:PostTitle, :Content)");
-    $stmt->bindValue(":PostTitle", $new_item['PostTitle']);
-    $stmt->bindValue(":Content", $new_item['Content']);
-    $stmt->execute();
+   
+    try 
+    {
+        //`CategoryId`, `UserId`, `RoleId` ,`PostTitle`, `Content`)
+        $stmt = $pdo->prepare("INSERT INTO Article (CategoryId, UserId, RoleId, PostTitle, Content) VALUES (:CategoryId, :UserId, :RoleId, :PostTitle, :Content)");
+        $stmt->bindValue(":PostTitle", $new_article -> GetPostTitle());
+        $stmt->bindValue(":Content", $new_article ->GetContent());
+        $stmt->bindValue(":CategoryId", $new_article ->GetCategoryId());
+        $stmt->bindValue(":UserId", $new_article ->GetUserId());
+        $stmt->bindValue(":RoleId", $new_article ->GetRoleId());
+        
+        $stmt->execute();
+    } 
+    catch (Exception $e) 
+    {
+        echo 'Am i having exception???';
+        die($e->getMessage());
+    }
 }
 
 

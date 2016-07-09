@@ -6,6 +6,7 @@ const DB_PASS = '';
 
 try 
 {
+    //$pdo = new PDO("mysql:host=127.0.0.1;port=8889;dbname=blog", 'root', 'root');
     $pdo = new PDO(DB_DSN, DB_USER, DB_PASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 } 
