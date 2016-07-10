@@ -11,7 +11,7 @@ class User {
     private $RoleId;
     private $RoleName;
 
-    function __construct($UserId, $FirstName, $LastName, $Email, $Password, $IsActive, $CreatedOn, $RoleId, $RoleName)
+    function __construct($UserId, $FirstName, $LastName, $Email, $Password, $IsActive, $CreatedOn, $RoleId)
     {
         $this->UserId = $UserId;
         $this->FirstName = $FirstName;
@@ -21,7 +21,6 @@ class User {
         $this->IsActive = $IsActive;
         $this->CreatedOn = $CreatedOn;
         $this->RoleId = $RoleId;
-        $this->RoleName = $RoleName;
     }
     
     public function getUserId()
@@ -36,7 +35,7 @@ class User {
 
     public function getFirstName()
     {
-        return $this->FirstName;
+        return trim($this->FirstName);
     }
 
     public function setFirstName($FirstName)
@@ -46,7 +45,7 @@ class User {
 
     public function getLastName()
     {
-        return $this->LastName;
+        return trim($this->LastName);
     }
 
     public function setLastName($LastName)
@@ -56,7 +55,7 @@ class User {
 
     public function getEmail()
     {
-        return $this->Email;
+        return trim($this->Email);
     }
 
     public function setEmail($Email)
@@ -66,7 +65,7 @@ class User {
 
     public function getPassword()
     {
-        return $this->Password;
+        return trim($this->Password);
     }
 
     public function setPassword($Password)
@@ -106,7 +105,7 @@ class User {
     
     public function getRoleName()
     {
-        return $this->RoleName;
+        return trim($this->RoleName);
     }
     
     public function setRoleName($RoleName)
