@@ -1,10 +1,10 @@
 <?php
-
 namespace BlogDao;
-//require_once '../model/Article.php';
-//require_once '../model/AuthorisationRole.php';
-//require_once '../model/Category.php';
-//require_once '../model/User.php';
+
+require_once '../model/Article.php';
+require_once '../model/AuthorisationRole.php';
+require_once '../model/Category.php';
+require_once '../model/User.php';
 
 //USER FUNCTIONS
 function read_user($pdo, $username) {
@@ -96,13 +96,13 @@ function read_users($pdo)
 
 function read_articles($pdo)
 {
-    $query = $pdo->query("select at.*, ct.Name 'CategoryName', CONCAT(ur.FirstName, ' ', ur.LastName) 'Author' from article at join category ct on at.CategoryId = ct.CategoryId join user ur on at.UserId = ur.UserId");
+    $query = $pdo->query("select at.*, ct.Name 'CategoryName', CONCAT(ur.FirstName, ' ', ur.LastName) 'Author' from Article at join category ct on at.CategoryId = ct.CategoryId join user ur on at.UserId = ur.UserId");
     $result = $query->fetchAll();
     
     foreach ($result as $article)
     {
         $art = new \Article($article['ArticleId'], $article['CategoryId'], $article['UserId'], 
-                        $article['PostTitle'], $article['CreatedOn'], $article['Content']);
+                        $article['PostTitle'], $article['CreatedOn'], $article['Content'], $article['RoleId']);
         $art->setAuthor($article['Author']);
         $art->setCategoryName($article['CategoryName']);
         $articleObjArray[] = $art;

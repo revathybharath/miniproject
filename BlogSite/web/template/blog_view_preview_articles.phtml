@@ -1,0 +1,19 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Article name</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+        <?php
+       foreach ($articles as $article) { ?>
+           <tr>
+            <td> <?php echo $article -> getPostTitle(); ?> </td>
+            <td> <?php echo $article -> getAuthor(); ?> </td>
+           </tr> 
+       <?php }?>
+    </tbody>
+  </table>
+</div>

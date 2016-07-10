@@ -1,8 +1,8 @@
 <?php
 
-include '../../model/Article.php';
-include '../../dao/BlogDao.php';
-include '../common.php';
+include '../model/Article.php';
+include '../dao/BlogDao.php';
+include 'common.php';
 
 use function BlogDao\create_post;
 
@@ -22,3 +22,6 @@ $blg = new Article (1, 1, 1, $articleTitle, '2016-07-05 21:07:01', $articleData,
 create_post($pdo,$blg);
 
 echo 'Post has been created!';
+?>
+<br>
+<a href='/'>Home</a>
