@@ -11,7 +11,7 @@ include dirname(__FILE__).'/../App/blog_app.php';
 //echo $testArticle->getContent();
 ?>
 
-<h2><font face="verdana"color="white">Newest articles </font></p></h2>
+<h2><font face="verdana"color="black">Newest articles </font></p></h2>
 <h2> <a href='/template/blog_post_form.html'><font face="verdana">Submit an article</font></a></h2>
 
 <?php include("Footer.php"); ?>
