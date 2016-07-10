@@ -38,4 +38,5 @@ function create_user($pdo, $new_user)
 {
     return create_user($pdo, $new_user);
 }
+
 ?>
