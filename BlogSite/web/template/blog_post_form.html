@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,27 +7,39 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
+  <link href="css/blog-post.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+    
+<!--/* Add header */-->
 
-<div class="container">
-  <h2>Submit a new blog post</h2>
+<!--/* Start form */-->
+    <div class="container">
+        <h2>Submit a new blog post</h2>
   
-  <form action="../recieveBlogPost.php" method="POST" role="form" class="form-horizontal">
+        <form action="../recieveBlogPost.php" method="POST" role="form" class="form-horizontal">
 
-   <div class="form-group">
-      <label for="post">Add title:</label>
-      <input type="text" class="form-control" name="articleTitle" placeholder="Enter article title here">
+    <div class="form-group">
+        <label for="post">Add title:</label>
+        <input type="text" class="form-control" name="articleTitle" placeholder="Enter article title here">
     </div>
        <div class="form-group">
         <label for="article">Add text here: </label>
         <textarea class="form-control" rows="20" id="comment" name="articleData" placeholder="Enter article text here"></textarea>
-    </div>
+        </div>
         <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-</div>
+        </form>
+    </div>
 
-</body>
+<!--/* Start footer */-->
+    <br>
+    <hr>
+    <div class="footer">
+    <div id="texts" style="display:inline;"> 
+                <h4><p><font face="verdana"color="black">Powered By The DevelopHers</font></p></h4>
+      © 2016 Osterley Guide
+    </div>
+  </body>
 </html>
 
 
