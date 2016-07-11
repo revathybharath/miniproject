@@ -71,7 +71,7 @@
     }
 </script>
 
-<p><span class="error">* required field.</span></p>
+<p><span class="error">* Required field.</span></p>
 <form id='createuserform' action='' method='POST'>
   <fieldset>
     <div>

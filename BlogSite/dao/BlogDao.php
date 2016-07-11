@@ -131,3 +131,32 @@ function read_roles($pdo)
     }    
     return $roleObjArray;
 }
+
+function UserLogin($pdo, $userName, $password)
+{
+    $query = $pdo->prepare("SELECT * FROM user WHERE EMAIL = :email");
+    $query->execute(['email' => $userName]);
+    $result = $query->fetchAll();
+    
+    if ((empty($result)) || (is_null($result))) 
+    {
+        // 1 means login does not exist in database;
+        return 1;
+    }
+    else
+    {
+        foreach ($result as $user)
+        {
+            if ($user['Password'] != $password)
+            {
+                //2 means Invalid password.
+                return 2;
+            }
+            else
+            {
+                //3 Loggin successful
+                return 3;
+            }
+        }
+    }
+}
