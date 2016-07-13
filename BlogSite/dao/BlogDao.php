@@ -15,12 +15,13 @@ function create_post($pdo, $new_article) {
     try 
     {
         //`CategoryId`, `UserId`, `RoleId` ,`PostTitle`, `Content`)
-        $stmt = $pdo->prepare("INSERT INTO Article (CategoryId, UserId, RoleId, PostTitle, Content) VALUES (:CategoryId, :UserId, :RoleId, :PostTitle, :Content)");
+        $stmt = $pdo->prepare("INSERT INTO Article (CategoryId, UserId, RoleId, PostTitle, Content, CreatedOn) VALUES (:CategoryId, :UserId, :RoleId, :PostTitle, :Content, :CreatedOn)");
         $stmt->bindValue(":PostTitle", $new_article -> GetPostTitle());
         $stmt->bindValue(":Content", $new_article ->GetContent());
         $stmt->bindValue(":CategoryId", $new_article ->GetCategoryId());
         $stmt->bindValue(":UserId", $new_article ->GetUserId());
         $stmt->bindValue(":RoleId", $new_article ->GetRoleId());
+        $stmt->bindValue(":CreatedOn", $new_article ->getCreatedOn());
         
         $stmt->execute();
     } 
@@ -111,7 +112,7 @@ function read_users($pdo)
 
 function read_articles($pdo)
 {
-    $query = $pdo->query("select at.*, ct.Name 'CategoryName', CONCAT(ur.FirstName, ' ', ur.LastName) 'Author' from Article at join category ct on at.CategoryId = ct.CategoryId join user ur on at.UserId = ur.UserId");
+    $query = $pdo->query("select at.*, ct.Name 'CategoryName', CONCAT(ur.FirstName, ' ', ur.LastName) 'Author' from Article at join category ct on at.CategoryId = ct.CategoryId join user ur on at.UserId = ur.UserId ORDER BY CreatedOn DESC");
     $result = $query->fetchAll();
     
     foreach ($result as $article)

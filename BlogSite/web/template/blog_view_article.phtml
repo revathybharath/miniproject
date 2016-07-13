@@ -1,11 +1,23 @@
 <div>
-<?php 
+    <div class='blog-article'>
 
-//add css and format later...
-echo $article->getArticleId(); 
-echo $article->getPostTitle();     
-echo $article->getContent(); 
-        ?>
-         
-           
+         <div class='blog-content'>
+
+            <h1 class='article-header'>
+            <?php
+            echo $article->getPostTitle(); 
+             ?>
+            </h1>
+            <div class="article-body">
+                <?php
+                echo $article->getContent(); 
+                 ?>
+            </div>
+             
+              <div class="article-created-date">
+                <?php
+                echo 'Posted on ' . $article->getCreatedOn(); 
+                 ?>
+            </div>
+    </div>      
 </div>

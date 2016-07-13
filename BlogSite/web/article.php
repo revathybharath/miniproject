@@ -1,4 +1,4 @@
-
+ <link rel="stylesheet" href="/css/view-article.css">
 <?php 
 include("header.php"); 
 include 'common.php';

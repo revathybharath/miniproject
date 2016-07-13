@@ -15,7 +15,7 @@ $articleData = $_POST['articleData'];
 //echo $articleData;
 //echo $articleTitle;
 //($ArticleId, $CategoryId, $UserId, $PostTitle, $CreatedOn, $Content, $RoleID)
-$blg = new Article (1, 1, 1, $articleTitle, '2016-07-05 21:07:01', $articleData,1);
+$blg = new Article (1, 1, 1, $articleTitle, date('Y-m-d H:i:s'), $articleData,1);
 
 //echo $blg -> getPostTitle();
 
