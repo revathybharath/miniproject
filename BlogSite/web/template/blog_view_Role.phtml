@@ -1,0 +1,30 @@
+<div>
+ 
+<h1>
+Role
+</h1>
+<?php if (empty($Role)): ?>
+    <p>No Role found.</p>
+<?php else: ?>
+    <table style="width:100%">
+        <tr>
+            <th hidden="true">Role Id</th>
+            <th>Role Name</th>
+            <th>Role Description</th>
+            <th>Created On</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <?php foreach ($Role as $roles): ?>
+        <tr>
+            <td hidden="true"><?php echo $roles->getroleId() ?></td>
+            <td><?php echo $roles->getName() ?></td>
+            <td><?php echo $roles->getRoleDescription() ?></td>
+            <td><?php echo $roles->getCreatedOn() ?></td>
+            <td align="center"><a href="Admin.php">EDIT</a></td>
+            <td align="center"><a href="Admin.php">DELETE</a></td>
+        </tr>
+        <?php endforeach; ?>        
+    </table>
+<?php endif; ?>    
+</div>

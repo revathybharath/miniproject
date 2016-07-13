@@ -4,8 +4,6 @@ include '../App/blog_app.php';
 include 'common.php';
 use function App\create_post;
 
-//var_dump($_POST);
-
 $articleTitle = $_POST['articleTitle'];
 $articleData = $_POST['articleData'];
 

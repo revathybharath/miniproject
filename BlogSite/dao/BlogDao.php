@@ -5,10 +5,6 @@ require_once '../model/AuthorisationRole.php';
 require_once '../model/Category.php';
 require_once '../model/User.php';
 
-//USER FUNCTIONS
-function read_user($pdo, $username) {
-
-}
 // CART FUNCTIONS
 function create_post($pdo, $new_article) {
    
@@ -97,10 +93,27 @@ function read_users($pdo)
         $usr = new \User($user['UserId'], $user['FirstName'], $user['LastName'], 
                         $user['Email'], $user['Password'], $user['IsActive'],
                         $user['CreatedOn'], $user['RoleId']);
-        $usr->setRoleName($user['RoleName']);        
+        $usr->setRoleName($user['RoleName']);
         $userObjArray[] = $usr;
     }    
     return $userObjArray;
+}
+
+function read_user_ById($pdo, $userId) 
+{
+    $query = $pdo->prepare("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId WHERE usr.UserId = :userId");
+    $query->execute(['userId' => $userId]);
+    $result = $query->fetchAll();
+    
+    foreach ($result as $user)
+    {
+        $usr = new \User($user['UserId'], $user['FirstName'], $user['LastName'], 
+        $user['Email'], $user['Password'], $user['IsActive'],
+        $user['CreatedOn'], $user['RoleId']);
+        $usr->setRoleName($user['RoleName']);
+        break;
+    }
+    return $usr;
 }
 
 function read_articles($pdo)
@@ -119,6 +132,50 @@ function read_articles($pdo)
     return $articleObjArray;
 }
 
+function UserLogin($pdo, $userName, $password)
+{
+    $query = $pdo->prepare("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId WHERE usr.EMAIL = :email");
+    $query->execute(['email' => $userName]);
+    $result = $query->fetchAll();
+    
+    if ((empty($result)) || (is_null($result))) 
+    {
+        // -1 means login does not exist in database;
+        return -1;
+    }
+    else
+    {
+        foreach ($result as $user)
+        {
+            if ($user['Password'] != $password)
+            {
+                //-2 means Invalid password.
+                return -2;
+            }
+            else
+            {
+                //3 Loggin successful
+                return $user['UserId'];
+            }
+        }
+    }
+}
+
+function read_category($pdo)
+{
+    $query = $pdo->query("SELECT * from category");
+    $result = $query->fetchAll();
+    
+    foreach ($result as $categ)
+    {
+        $category = new \Category($categ['CategoryId'], $categ['Name'], $categ['CategoryDescription'], 
+                        $categ['CreatedOn']);
+          $categoryObjArray[] = $category;
+    }    
+    return $categoryObjArray;
+        
+}
+
 function read_roles($pdo)
 {
     $query = $pdo->query("select * from authorisationrole");
@@ -130,33 +187,4 @@ function read_roles($pdo)
         $roleObjArray[] = $authRole;
     }    
     return $roleObjArray;
-}
-
-function UserLogin($pdo, $userName, $password)
-{
-    $query = $pdo->prepare("SELECT * FROM user WHERE EMAIL = :email");
-    $query->execute(['email' => $userName]);
-    $result = $query->fetchAll();
-    
-    if ((empty($result)) || (is_null($result))) 
-    {
-        // 1 means login does not exist in database;
-        return 1;
-    }
-    else
-    {
-        foreach ($result as $user)
-        {
-            if ($user['Password'] != $password)
-            {
-                //2 means Invalid password.
-                return 2;
-            }
-            else
-            {
-                //3 Loggin successful
-                return 3;
-            }
-        }
-    }
 }

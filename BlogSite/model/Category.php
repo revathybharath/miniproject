@@ -3,14 +3,14 @@
 class Category {
     private $CategoryId;
     private $Name;
-    private $RoleDescription;
+    private $CategoryDescription;
     private $CreatedOn;
 
-    function __construct($CategoryId, $Name, $RoleDescription, $CreatedOn)
+    function __construct($CategoryId, $Name, $CategoryDescription, $CreatedOn)
     {
         $this->CategoryId = $CategoryId;
         $this->Name = $Name;
-        $this->RoleDescription = $RoleDescription;
+        $this->CategoryDescription = $CategoryDescription;
         $this->CreatedOn = $CreatedOn;
     }
 
@@ -34,14 +34,14 @@ class Category {
         $this->Name = $Name;
     }
 
-    public function getRoleDescription()
+    public function getCategoryDescription()
     {
-        return $this->RoleDescription;
+        return $this->CategoryDescription;
     }
 
-    public function setRoleDescription($RoleDescription)
+    public function setCategoryDescription($CategoryDescription)
     {
-        $this->RoleDescription = $RoleDescription;
+        $this->CategoryDescription = $CategoryDescription;
     }
 
     public function getCreatedOn()

@@ -1,0 +1,30 @@
+<div>
+ 
+<h1>
+Category
+</h1>
+<?php if (empty($Category)): ?>
+    <p>No Category found.</p>
+<?php else: ?>
+    <table style="width:100%">
+        <tr>
+            <th hidden="true">Category Id</th>
+            <th>Category Name</th>
+            <th>Category Description</th>
+            <th>Created On</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <?php foreach ($Category as $categories): ?>
+        <tr>
+            <td hidden="true"><?php echo $categories->getcategoryId() ?></td>
+            <td><?php echo $categories->getName() ?></td>
+            <td><?php echo $categories->getCategoryDescription() ?></td>
+            <td><?php echo $categories->getCreatedOn() ?></td>
+            <td align="center"><a href="Admin.php">EDIT</a></td>
+            <td align="center"><a href="Admin.php">DELETE</a></td>
+        </tr>
+        <?php endforeach; ?>        
+    </table>
+<?php endif; ?>    
+</div>
