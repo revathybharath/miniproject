@@ -34,9 +34,15 @@ function create_post($pdo, $new_article) {
 function read_article_id($pdo, $ArticleId) {
 	$stmt = $pdo->prepare("SELECT * FROM article WHERE ArticleId = :ArticleId");
 	$stmt->execute(['ArticleId' => $ArticleId]);
-        $foundArticle = $stmt->fetch();
+        $article = $stmt->fetch();
+        
+         $articleObj = new \Article($article['ArticleId'], $article['CategoryId'], $article['UserId'], 
+                        $article['PostTitle'], $article['CreatedOn'], $article['Content'], $article['RoleId']);
+       
+         
+       
         //$newArticle = $obj = new Article($foundArticle['ArticleId'], $foundArticle['CategoryId'], $foundArticle['UserId'], $foundArticle['PostTitle'], $foundArticle['CreatedOn'], $foundArticle['Content'], $foundArticle['RoleId']);
-        //return $newArticle;
+        return $articleObj;
 }
 
 function read_article_name($pdo, $article_title) {

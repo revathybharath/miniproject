@@ -12,5 +12,5 @@ echo display('articles', ['articles' => $result]);
 $result = read_users($pdo);
 echo display('users', ['users' => $result]);
 
-include("footer.php"); 
+include("footer.php");
 ?>

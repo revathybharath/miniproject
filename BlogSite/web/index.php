@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<?php 
+<?php
 include("header.php"); 
 include 'common.php';
 include dirname(__FILE__).'/../App/blog_app.php';
