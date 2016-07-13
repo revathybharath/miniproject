@@ -11,12 +11,13 @@ function create_post($pdo, $new_article) {
     try 
     {
         //`CategoryId`, `UserId`, `RoleId` ,`PostTitle`, `Content`)
-        $stmt = $pdo->prepare("INSERT INTO Article (CategoryId, UserId, RoleId, PostTitle, Content) VALUES (:CategoryId, :UserId, :RoleId, :PostTitle, :Content)");
+        $stmt = $pdo->prepare("INSERT INTO Article (CategoryId, UserId, RoleId, PostTitle, Content, CreatedOn) VALUES (:CategoryId, :UserId, :RoleId, :PostTitle, :Content, :CreatedOn)");
         $stmt->bindValue(":PostTitle", $new_article -> GetPostTitle());
         $stmt->bindValue(":Content", $new_article ->GetContent());
         $stmt->bindValue(":CategoryId", $new_article ->GetCategoryId());
         $stmt->bindValue(":UserId", $new_article ->GetUserId());
         $stmt->bindValue(":RoleId", $new_article ->GetRoleId());
+        $stmt->bindValue(":CreatedOn", $new_article ->getCreatedOn());
         
         $stmt->execute();
     } 
@@ -30,9 +31,15 @@ function create_post($pdo, $new_article) {
 function read_article_id($pdo, $ArticleId) {
 	$stmt = $pdo->prepare("SELECT * FROM article WHERE ArticleId = :ArticleId");
 	$stmt->execute(['ArticleId' => $ArticleId]);
-        $foundArticle = $stmt->fetch();
+        $article = $stmt->fetch();
+        
+         $articleObj = new \Article($article['ArticleId'], $article['CategoryId'], $article['UserId'], 
+                        $article['PostTitle'], $article['CreatedOn'], $article['Content'], $article['RoleId']);
+       
+         
+       
         //$newArticle = $obj = new Article($foundArticle['ArticleId'], $foundArticle['CategoryId'], $foundArticle['UserId'], $foundArticle['PostTitle'], $foundArticle['CreatedOn'], $foundArticle['Content'], $foundArticle['RoleId']);
-        //return $newArticle;
+        return $articleObj;
 }
 
 function read_article_name($pdo, $article_title) {
@@ -118,7 +125,7 @@ function read_user_ById($pdo, $userId)
 
 function read_articles($pdo)
 {
-    $query = $pdo->query("select at.*, ct.Name 'CategoryName', CONCAT(ur.FirstName, ' ', ur.LastName) 'Author' from Article at join category ct on at.CategoryId = ct.CategoryId join user ur on at.UserId = ur.UserId");
+    $query = $pdo->query("select at.*, ct.Name 'CategoryName', CONCAT(ur.FirstName, ' ', ur.LastName) 'Author' from Article at join category ct on at.CategoryId = ct.CategoryId join user ur on at.UserId = ur.UserId ORDER BY CreatedOn DESC");
     $result = $query->fetchAll();
     
     foreach ($result as $article)
