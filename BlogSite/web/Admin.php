@@ -36,5 +36,5 @@ else
     echo display('category', ['Category' => $result]);
 }
 
-include("footer.php"); 
+include("footer.php");
 ?>
