@@ -7,6 +7,9 @@ and open the template in the editor.
     Created on : Jul 13, 2016, 9:42:37 PM
     Author     : katrna
 */
+.blog-content {
+    z-index:0;
+}
 
 .blog-article{
    margin-left: 10%;
