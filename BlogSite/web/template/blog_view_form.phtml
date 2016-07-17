@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>Add a post</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>-->
+  <link href="css/blog-post.css" rel="stylesheet" type="text/css"/>
+
+ 
+</head>
+
+<body>
+    <div class="container">
+        <h2>Submit a new blog post</h2>
+  
+        <form action="../recieveBlogPost.php" method="POST" role="form" class="form-horizontal">
+            
+            <div class="form-group">
+                <label for="post">Add title:</label>
+                <input type="text" class="form-control" name="articleTitle" placeholder="Enter article title here">
+            </div>
+    
+            <div class="form-group">
+                <label for="article">Add text here: </label>
+                <textarea class="form-control" rows="20" id="comment" name="articleData" placeholder="Enter article text here"></textarea>
+            </div>
+             <div class="form-group">
+                <label for="category">Add blog category: </label>
+                <select name="category">
+                 <option value="Restaurant">Restaurant</option>
+                 <option value="Shopping">Shopping</option>
+                 <option value="Attraction">Attraction</option>
+                 <option value="Pubs">Pubs</option>
+                 <option value="Art">Art</option>
+                 <option value="Music">Music</option>
+            </select>
+            <br>
+            <button type="submit" class="btn btn-default">Submit</button>
+          
+        </form>
+    </div>
+</body>
+
+
+

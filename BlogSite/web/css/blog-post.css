@@ -54,7 +54,7 @@ body{ overflow-y: scroll; padding: 0; margin: 0; font-family: Segoe UI; font-siz
     width: 500px;
     height: 30px;
 }
-#nav{ background-color: #222; position: fixed; width: 100%; top: 0; }
+#nav{ background-color: #222; position: fixed; width: 100%; top: 0; z-index:1;}
 #nav-wrapper{ width: 960px; margin: 0 auto; text-align: left; }
 #nav ul{ list-style-type: none; padding: 0; margin: 0; }
 #nav ul li{ display: inline-block; color: #CCC; }

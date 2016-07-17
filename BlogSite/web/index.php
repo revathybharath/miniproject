@@ -1,7 +1,7 @@
 <?php 
-include("header.php"); 
+include("header.php");
 include 'common.php';
-include dirname(__FILE__).'/../App/blog_app.php';
+include '../App/blog_app.php';
 include 'View/blog_view.php';
 use function View\display;
 $result = App\read_articles($pdo);
@@ -13,6 +13,6 @@ $result = App\read_articles($pdo);
 
 echo display('preview_articles', ['articles' => $result]);
 ?>
-<h2> <a href="/template/blog_post_form.html"><font face="verdana">Submit an article</font></a></h2>
+<h3> <a href="/createBlogPost.php"><font face="verdana">Submit an article</font></a></h3>
 
 <?php include("Footer.php"); ?>
