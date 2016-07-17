@@ -6,7 +6,7 @@ require_once '../model/Category.php';
 require_once '../model/User.php';
 
 // CART FUNCTIONS
-function create_post($pdo, $new_article) {
+function create_post_in_db($pdo, $new_article) {
    
     try 
     {
@@ -58,7 +58,7 @@ function delete_user($pdo, $username) {
         $stmt->execute(['id' => $username]);
 }
 
-function create_user($pdo, $user)
+function create_user_in_db($pdo, $user)
 {
     // Email address is a unique key in the user table. And email is will be used as login so duplicate is not allowed
     $query = $pdo->prepare("SELECT * FROM user WHERE EMAIL = :email");
@@ -90,7 +90,7 @@ function create_user($pdo, $user)
     }
 }
 
-function read_users($pdo)
+function read_all_users($pdo)
 {
     $query = $pdo->query("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId");
     $result = $query->fetchAll();
@@ -106,7 +106,7 @@ function read_users($pdo)
     return $userObjArray;
 }
 
-function read_user_ById($pdo, $userId) 
+function read_user($pdo, $userId) 
 {
     $query = $pdo->prepare("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId WHERE usr.UserId = :userId");
     $query->execute(['userId' => $userId]);
@@ -123,7 +123,7 @@ function read_user_ById($pdo, $userId)
     return $usr;
 }
 
-function read_articles($pdo)
+function read_articles_from_db($pdo)
 {
     $query = $pdo->query("select at.*, ct.Name 'CategoryName', CONCAT(ur.FirstName, ' ', ur.LastName) 'Author' from Article at join category ct on at.CategoryId = ct.CategoryId join user ur on at.UserId = ur.UserId ORDER BY CreatedOn DESC");
     $result = $query->fetchAll();
@@ -139,7 +139,7 @@ function read_articles($pdo)
     return $articleObjArray;
 }
 
-function UserLogin($pdo, $userName, $password)
+function ValidateUserLogin($pdo, $userName, $password)
 {
     $query = $pdo->prepare("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId WHERE usr.EMAIL = :email");
     $query->execute(['email' => $userName]);
@@ -168,7 +168,7 @@ function UserLogin($pdo, $userName, $password)
     }
 }
 
-function read_category($pdo)
+function read_category_from_db($pdo)
 {
     $query = $pdo->query("SELECT * from category");
     $result = $query->fetchAll();
@@ -183,7 +183,7 @@ function read_category($pdo)
         
 }
 
-function read_roles($pdo)
+function read_roles_from_db($pdo)
 {
     $query = $pdo->query("select * from authorisationrole");
     $result = $query->fetchAll();

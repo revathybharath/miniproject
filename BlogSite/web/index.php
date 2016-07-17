@@ -1,7 +1,7 @@
 <?php 
-include("header.php"); 
+include("header.php");
 include 'common.php';
-include dirname(__FILE__).'/../App/blog_app.php';
+include '../App/blog_app.php';
 include 'View/blog_view.php';
 use function View\display;
 $result = App\read_articles($pdo);
