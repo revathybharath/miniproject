@@ -16,7 +16,7 @@
             <td hidden="true"><?php echo $article->getArticleId() ?></td>
             <td hidden="true"><?php echo $article->getCategoryId() ?></td>
             <td hidden="true"><?php echo $article->getUserId() ?></td>
-            <td><?php echo $article->getPostTitle() ?></td>
+            <td><a href='/article.php?id=<?php echo $article -> getArticleId(); ?>'><?php echo $article -> getPostTitle(); ?> </a></td>
             <td><?php echo $article->getAuthor() ?></td>
             <td><?php echo $article->getCategoryName() ?></td>
             <td><?php echo $article->getCreatedOn() ?></td>
