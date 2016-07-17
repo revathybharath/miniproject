@@ -17,7 +17,8 @@
             <div id ="nav-wrapper">
                 <ul>
                     <li><a href="index.php"Home>Home</a></li>
-                    <li><a href="#"About Us>About Us</a></li>
+                    <li><a href="AboutUs.php"About Us>About Us</a></li>
+                    <li><a href="Archive.php"Archive>Archive</a></li>
                     <?php 
                         include '../model/User.php';
                         session_start();
