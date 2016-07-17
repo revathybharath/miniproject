@@ -1,10 +1,11 @@
 <?php
 include 'header.php';
 include '../model/Article.php';
-include '../dao/BlogDao.php';
+//include '../dao/BlogDao.php';
+include '../app/blog_app.php';
 include 'common.php';
 
-use function BlogDao\create_post;
+use function create_post;
 
 $articleTitle = $_POST['articleTitle'];
 $articleData = $_POST['articleData'];

@@ -9,6 +9,7 @@ use function BlogDao\read_users;
 use function BlogDao\read_user_ById;
 use function BlogDao\create_post;
 use function BlogDao\create_user;
+use function BlogDao\Create_category;
 use function BlogDao\UserLogin;
 use function BlogDao\read_category;
 use function BlogDao\read_roles;
@@ -42,6 +43,12 @@ function create_user($pdo, $new_user)
 {
     return create_user($pdo, $new_user);
 }
+
+function create_category($pdo, $new_category) 
+{
+    return create_category($pdo, $new_category);
+}
+
 
 function UserLogin($pdo, $userName, $password)
 {

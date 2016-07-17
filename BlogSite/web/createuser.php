@@ -71,6 +71,7 @@
     }
 </script>
 
+<h1 align='center'> Create New User</h1>
 <p><span class="error">* Required field.</span></p>
 <form id='createuserform' action='' method='POST'>
   <fieldset>
@@ -125,20 +126,22 @@
                     Role
                 </td>
                 <td>
+                    
                     <?php 
                         $selectedItem = isset($_POST['role']) ? $_POST['role'] : '';
                         $result = read_roles($pdo);
-                        $select= '<select name="role" id="role">';
-                        foreach ($result as $role)
+                        $select = '<select name="role" id="role">';
+                        foreach ($result as $role) 
                         {
-                            $select.='<option value="'.$role->getRoleId().'"';
-                            if ($selectedItem == $role->getRoleId())
-                            {
-                                $select.=' selected="true"';
-                            }
-                            $select.='>'.$role->getName().'</option>';
+                         $select .= '<option value ="'.$role->getRoleId().'"';
+                         if ($selectedItem ==  $role->getRoleId())
+                         {
+                            $select .= "selected=true";
+                            
+                          }
+                          $select .= '">'.$role->getName().'</option>"';
                         }
-                        $select.='</select>';
+                        $select .= '</select>';
                         echo $select;
                     ?>
                 </td>

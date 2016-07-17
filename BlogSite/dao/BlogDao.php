@@ -5,7 +5,6 @@ require_once '../model/AuthorisationRole.php';
 require_once '../model/Category.php';
 require_once '../model/User.php';
 
-// CART FUNCTIONS
 function create_post($pdo, $new_article) {
    
     try 
@@ -166,6 +165,22 @@ function UserLogin($pdo, $userName, $password)
             }
         }
     }
+}
+
+function create_category($pdo,$new_category)
+{
+        $stmt = $pdo->prepare("INSERT INTO CATEGORY (Name, CategoryDescription) VALUES (:Name, :CategoryDescription)");
+        $stmt->bindValue(":Name", $new_category->getName());
+        $stmt->bindValue(":CategoryDescription", $new_category->getCategoryDescription());
+        $result = $stmt->execute();
+        if ($result == true)
+        {
+            return 'Category has been created!';
+        }
+        else
+        {
+            return 'Something went wrong';
+        }
 }
 
 function read_category($pdo)
