@@ -1,8 +1,12 @@
 <div>
  
-<h1>
-Category
-</h1>
+<table style="width: 100%">
+    <tr>
+        <td><h2>Manage Categories</h2></td>
+        <td style="text-align: right"><h2><a href='../Createcategory.php'>Create New Category</a></h2></td>
+    </tr>        
+</table>
+    
 <?php if (empty($Category)): ?>
     <p>No Category found.</p>
 <?php else: ?>
@@ -21,10 +25,11 @@ Category
             <td><?php echo $categories->getName() ?></td>
             <td><?php echo $categories->getCategoryDescription() ?></td>
             <td><?php echo $categories->getCreatedOn() ?></td>
-            <td align="center"><a href="Admin.php">EDIT</a></td>
-            <td align="center"><a href="Admin.php">DELETE</a></td>
+            <td align="center"><?php echo '<a href="Createcategory.php?ops=Edit&Id='.$categories->getcategoryId().'">EDIT</a>'; ?></td>
+            <td align="center"><?php echo '<a href="Createcategory.php?ops=Delete&Id='.$categories->getcategoryId().'">DELETE</a>'; ?></td>
         </tr>
         <?php endforeach; ?>        
     </table>
 <?php endif; ?>    
 </div>
+

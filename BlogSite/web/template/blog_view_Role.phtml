@@ -20,11 +20,12 @@ Role
             <td hidden="true"><?php echo $roles->getroleId() ?></td>
             <td><?php echo $roles->getName() ?></td>
             <td><?php echo $roles->getRoleDescription() ?></td>
-            <td><?php echo $roles->getCreatedOn() ?></td>
+            <td><?php echo $roles->getCreatedOn(); ?></td>
             <td align="center"><a href="Admin.php">EDIT</a></td>
             <td align="center"><a href="Admin.php">DELETE</a></td>
         </tr>
-        <?php endforeach; ?>        
+        <?php endforeach; ?>
     </table>
 <?php endif; ?>    
 </div>
+

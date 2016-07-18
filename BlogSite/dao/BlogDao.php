@@ -5,9 +5,8 @@ require_once '../model/AuthorisationRole.php';
 require_once '../model/Category.php';
 require_once '../model/User.php';
 
-// CART FUNCTIONS
-function create_post_in_db($pdo, $new_article) {
-   
+function create_post_in_db($pdo, $new_article) 
+{
     try 
     {
         //`CategoryId`, `UserId`, `RoleId` ,`PostTitle`, `Content`)
@@ -28,7 +27,8 @@ function create_post_in_db($pdo, $new_article) {
     }
 }
 
-function read_article_id($pdo, $ArticleId) {
+function read_article_id($pdo, $ArticleId) 
+{
 	$stmt = $pdo->prepare("SELECT * FROM article WHERE ArticleId = :ArticleId");
 	$stmt->execute(['ArticleId' => $ArticleId]);
         $article = $stmt->fetch();
@@ -36,26 +36,28 @@ function read_article_id($pdo, $ArticleId) {
          $articleObj = new \Article($article['ArticleId'], $article['CategoryId'], $article['UserId'], 
                         $article['PostTitle'], $article['CreatedOn'], $article['Content'], $article['RoleId']);
        
-         
-       
         //$newArticle = $obj = new Article($foundArticle['ArticleId'], $foundArticle['CategoryId'], $foundArticle['UserId'], $foundArticle['PostTitle'], $foundArticle['CreatedOn'], $foundArticle['Content'], $foundArticle['RoleId']);
         return $articleObj;
 }
 
-function read_article_name($pdo, $article_title) {
-        $stmt = $pdo->prepare("SELECT * FROM articles WHERE PostTitle = :PostTitle");
-        $stmt->execute(['name' => $article_title]);
-        return $stmt->fetch();
+function read_article_name($pdo, $article_title) 
+{
+    $stmt = $pdo->prepare("SELECT * FROM articles WHERE PostTitle = :PostTitle");
+    $stmt->execute(['name' => $article_title]);
+    return $stmt->fetch();
 }
 
-function delete_article($pdo, $article_id) {
-        $stmt = $pdo->prepare("DELETE FROM articles WHERE id = :id");
-        $stmt->execute(['id' => $article_id]);
+function delete_article($pdo, $article_id) 
+{
+    $stmt = $pdo->prepare("DELETE FROM articles WHERE id = :id");
+    $stmt->execute(['id' => $article_id]);
 }
 
-function delete_user($pdo, $username) {
-        $stmt = $pdo->prepare("DELETE FROM users WHERE UserId = :UserId");
-        $stmt->execute(['id' => $username]);
+function delete_user_byId($pdo, $userId) 
+{
+    $stmt = $pdo->prepare("DELETE FROM user WHERE UserId = :UserId");
+    $stmt->execute(['UserId' => $userId]);
+    $stmt->execute();
 }
 
 function create_user_in_db($pdo, $user)
@@ -67,13 +69,13 @@ function create_user_in_db($pdo, $user)
     
     if ((empty($userExist)) || (is_null($userExist))) 
     {
-        $stmt = $pdo->prepare("INSERT INTO USER (FirstName, LastName, Email, Password, IsActive, RoleId) VALUES (:FirstName, :LastName, :Email, :Password, :IsActive, :RoldId)");
+        $stmt = $pdo->prepare("INSERT INTO USER (FirstName, LastName, Email, Password, IsActive, RoleId) VALUES (:FirstName, :LastName, :Email, :Password, :IsActive, :RoleId)");
         $stmt->bindValue(":FirstName", $user->getFirstName());
         $stmt->bindValue(":LastName", $user->getLastName());
         $stmt->bindValue(":Email", $user->getEmail());
         $stmt->bindValue(":Password", $user->getPassword());
         $stmt->bindValue(":IsActive", $user->getIsActive());
-        $stmt->bindValue(":RoldId", $user->getRoleId());
+        $stmt->bindValue(":RoleId", $user->getRoleId());
         $result = $stmt->execute();
         if ($result == true)
         {
@@ -87,6 +89,27 @@ function create_user_in_db($pdo, $user)
     else
     {
         return "User ".$user->getEmail()." already exist in the database";
+    }
+}
+
+function update_user_in_db($pdo, $user)
+{
+    $stmt = $pdo->prepare("UPDATE USER SET FirstName = :FirstName, LastName = :LastName, Email = :Email, Password = :Password, IsActive = :IsActive, RoleId = :RoleId WHERE UserId = :UserId");
+    $stmt->bindValue(":UserId", $user->getUserId());
+    $stmt->bindValue(":FirstName", $user->getFirstName());
+    $stmt->bindValue(":LastName", $user->getLastName());
+    $stmt->bindValue(":Email", $user->getEmail());
+    $stmt->bindValue(":Password", $user->getPassword());
+    $stmt->bindValue(":IsActive", $user->getIsActive());
+    $stmt->bindValue(":RoleId", $user->getRoleId());
+    $result = $stmt->execute();
+    if ($result == true)
+    {
+        return 'User has been updated!';
+    }
+    else
+    {
+        return 'Something went wrong';
     }
 }
 
@@ -168,7 +191,7 @@ function ValidateUserLogin($pdo, $userName, $password)
     }
 }
 
-function create_category($pdo,$new_category)
+function create_category_in_db($pdo,$new_category)
 {
         $stmt = $pdo->prepare("INSERT INTO CATEGORY (Name, CategoryDescription) VALUES (:Name, :CategoryDescription)");
         $stmt->bindValue(":Name", $new_category->getName());
@@ -184,7 +207,7 @@ function create_category($pdo,$new_category)
         }
 }
 
-function read_category($pdo)
+function read_category_from_db($pdo)
 {
     $query = $pdo->query("SELECT * from category");
     $result = $query->fetchAll();
@@ -210,4 +233,65 @@ function read_roles_from_db($pdo)
         $roleObjArray[] = $authRole;
     }    
     return $roleObjArray;
+}
+
+function read_category_by_id($pdo, $categoryId)
+{
+    $query = $pdo->prepare("SELECT * FROM category WHERE CategoryId = :categoryId");
+    $query->execute(['categoryId' => $categoryId]);
+    $result = $query->fetchAll();
+    
+    foreach ($result as $categor)
+    {
+        $category = new \Category($categor['CategoryId'], $categor['Name'], $categor['CategoryDescription'], $categor['CreatedOn']);        
+        break;
+    }
+    return $category;
+}
+
+function update_category_in_db($pdo, $category)
+{
+    $stmt = $pdo->prepare("UPDATE Category SET Name = :Name, CategoryDescription = :CatDescription WHERE CategoryId = :CategoryId");
+    $stmt->bindValue(":Name", $category->getName());
+    $stmt->bindValue(":CatDescription", $category->getCategoryDescription());
+    $stmt->bindValue(":CategoryId", $category->getCategoryId());
+    $result = $stmt->execute();
+    if ($result == true)
+    {
+        return 'Category has been updated!';
+    }
+    else
+    {
+        return 'Something went wrong';
+    }
+}
+
+function delete_category_byId($pdo, $categoryId) 
+{
+    $stmt = $pdo->prepare("DELETE FROM Category WHERE CategoryId = :CategoryId");
+    $stmt->execute(['CategoryId' => $categoryId]);
+    $stmt->execute();
+}
+
+function search_article_in_db($pdo, $searchText)
+{
+    $query = $pdo->query("select at.*, ct.Name 'CategoryName', CONCAT(ur.FirstName, ' ', ur.LastName) 'Author' "
+            . "from Article at join category ct on at.CategoryId = ct.CategoryId "
+            . "join user ur on at.UserId = ur.UserId WHERE PostTitle LIKE \"%$searchText%\" OR Content LIKE \"%$searchText%\" ORDER BY CreatedOn DESC");
+    $result = $query->fetchAll();
+    
+    if (count($result) > 0)
+    {
+        foreach ($result as $article)
+        {
+            $art = new \Article($article['ArticleId'], $article['CategoryId'], $article['UserId'], 
+                            $article['PostTitle'], $article['CreatedOn'], $article['Content'], $article['RoleId']);
+            $art->setAuthor($article['Author']);
+            $art->setCategoryName($article['CategoryName']);
+            $articleObjArray[] = $art;
+        }
+        return $articleObjArray;
+    }
+    return null;
+    
 }
