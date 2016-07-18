@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Osterley Guide</title>
+        <title>Things to do in your lunch break</title>
         <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="img/favicn.ico" type="image" rel="icon"/> 
@@ -12,13 +12,14 @@
         <script type="text/javascript" src="js/jquery_notification_v.1.js"></script>
         <link href="css/jquery_notification.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
+    <body background="img/TTDIYLB_Background_trans.png">
         <div id="nav">
             <div id ="nav-wrapper">
                 <ul>
                     <li><a href="index.php"Home>Home</a></li>
                     <li><a href="AboutUs.php"About Us>About Us</a></li>
                     <li><a href="Archive.php"Archive>Archive</a></li>
+                    <li><a href="ContactUs.php"Contact Us>Contact Us</a></li>
                     <?php 
                         include '../model/User.php';
                         session_start();
@@ -44,17 +45,17 @@
             </div>
         </div>
         <div ID="logo">
-        <img id="logoimg" src="img/logo1.jpg" style="background-repeat:repeat-y;width:100%;" />
+            <img  id="logoimg" src="img/TTDIYLB logo.png" style="background-repeat:repeat-y;width:70%;" align="center" />
         </div>
         <header>
             <table width="100%">
                 <tr>
                     <td>
                         <div id="title">
-                            Osterley Guide By DevelopHers
+                            Home Page
                         </div>
                         <div id="catchy">
-                            Sights, smells and sounds of Osterley
+                            Welcome to our blog!
                         </div>
                     </td>
                     <td align="right">
