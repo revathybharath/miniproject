@@ -15,9 +15,15 @@ include dirname(__FILE__).'/../App/blog_app.php';
 
 use function View\display;
 
-
-
-echo display('form');
+    if ((empty($usr)) || (is_null($usr)))
+    {
+        echo '<li><a href="Login.php">Login</a></li>';
+    }
+    else 
+    {
+       echo display('form', ['UserId' => $usr->getUserId()]);  
+   
+    }
 
 include 'Footer.php'; 
 ?>
