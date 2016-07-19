@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Things to do in your lunch break</title>
+        <title>TTDIYLB blog</title>
         <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="img/favicn.ico" type="image" rel="icon"/> 
@@ -52,10 +52,10 @@
                 <tr>
                     <td>
                         <div id="title">
-                            Home Page
+                            
                         </div>
                         <div id="catchy">
-                            Welcome to our blog!
+                            
                         </div>
                     </td>
                     <td align="right">
