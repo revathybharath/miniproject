@@ -3,48 +3,13 @@ include("header.php"); ?>
 
 <html>
     <title>About Us</title>
-<style>
-div.container {
-    width: 100%;
-    border: 0px solid gray;
-}
-
-p {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-nav {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
-    font-family: Arial;
-
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-   
-nav ul a {
-    text-decoration: none;
-}
-
-article {
-    margin-left: 170px;
-    border-left: 5px solid pink;
-    padding: 1em;
-    overflow: hidden;
-}
-</style>
-   </head>
+    <link href="css/blog-post.css" rel="stylesheet" type="text/css"/>
+    <div ID="AboutUs">
+        
 <body>
 
-<div class="container">
-
 <header>
-   <h1><p>Our story so far...</p></h1>
+    <h1><p>Our story so far...</p></h1>
 </header>
 <nav>
   <ul>
