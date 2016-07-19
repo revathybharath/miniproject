@@ -35,7 +35,14 @@
                         {
                             if ($usr->getRoleName() == 'Admin')
                             {
-                                echo '<li><a href="Admin.php">Administration</a></li>';
+                                echo '<li>'
+                                    . '<a href="Admin.php?Manage=user">Administration</a>'
+                                    . '<ul>'
+                                        . '<li><a href="Admin.php?Manage=user">Manage User</a></li>'
+                                        . '<li><a href="Admin.php?Manage=article">Manage Article</a></li>'
+                                        . '<li><a href="Admin.php?Manage=category">Manage Category</a></li>'
+                                    . '</ul>'
+                                    . '</li>';
                             }
                             echo '<li><a href="Logout.php">Logout</a></li>';
                             echo '<li id="WelcomeMsg">Welcome '.$usr->getFirstName().'</li>';
@@ -59,7 +66,7 @@
                         </div>
                     </td>
                     <td align="right">
-                        <form method="POST" action="index.php" class="box">
+                        <form method="get" action="index.php" class="box">
                             <input type="text" class="keywords" id="searchtxt" name="searchtxt" placeholder="Search here & press enter ..." autocomplete="off" />
                         </form>
                     </td>

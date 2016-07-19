@@ -54,10 +54,31 @@ body{ overflow-y: scroll; padding: 0; margin: 0; font-family: Segoe UI; font-siz
     width: 500px;
     height: 30px;
 }
+
+/*
 #nav{ background-color: #222; position: fixed; width: 100%; top: 0; z-index:1;}
 #nav-wrapper{ width: 960px; margin: 0 auto; text-align: left; }
 #nav ul{ list-style-type: none; padding: 0; margin: 0; }
 #nav ul li{ display: inline-block; color: #CCC; }
 #nav ul li:hover{ background-color: #333; }
 #nav ul li a,visited{ color: #CCC; display: block; padding: 15px; text-decoration: none; }
+#nav ul ul{ display:none; position:absolute; top:100%; left:0; padding:0}
+#nav ul ul li{float:none;width:200px}
+#nav ul ul a{line-height:120%;padding:10px 15px}
+*/
+
+
+
+#nav { background-color:#222; top: 0; text-align: left;  z-index:1; position: fixed; width: 100%; }
+#nav-wrapper { width: 960px; margin: 0 auto; text-align: left; }
+#nav ul { list-style:none; position:relative; float:left; margin:0; padding:0}
+#nav ul a { color: #CCC; display: block; padding: 15px; text-decoration: none; }
+#nav ul li { position:relative; float:left; margin:0; padding:0; color: #CCC; }
+#nav ul li:hover { background:#333}
+#nav ul ul { display:none; position:absolute; top:100%; left:0; background:#222; padding:0}
+#nav ul ul li { float:none; width:200px}
+#nav ul ul a { line-height:120%; padding:10px 15px}
+#nav ul ul ul { top:0; left:100%}
+#nav ul li:hover > ul { display:block}
+
 #WelcomeMsg { width: 200px; text-align: right; }

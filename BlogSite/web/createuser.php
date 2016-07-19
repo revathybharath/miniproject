@@ -1,10 +1,51 @@
 <?php include('Header.php'); 
     include 'common.php';
     include '../App/blog_app.php';
-    use function App\read_roles, App\create_user;
+    use function App\read_roles, App\create_user, App\delete_user, App\read_user_ById, App\update_user;
     
-    $firstNameErr = $lastNameErr = $emailErr = $passwordErr = "";
+    $usr = $_SESSION['UserObject'];
+    if ((empty($usr)) || (is_null($usr)))
+    {
+        header("Location: index.php");
+    }
+
+    if ($usr->getRoleName() != 'Admin')
+    {
+        header("Location: index.php");
+    }
+  
+    $operation = "";
+    $userId = "";
+    if(isset($_GET['ops']))
+    {
+        $operation = $_GET['ops'];
+    }
+    if(isset($_GET['Id']))
+    {
+        $userId = $_GET['Id'];
+    }
+
+    if($operation == "Delete")
+    {
+        delete_user($pdo, $userId);
+        header("Location: Admin.php?Manage=user");
+    }
     
+    $firstName = $lastName = $pass = $email = $isactive = $selectedItem = "";
+    $submitButtonText = "Create User";
+    if($operation == "Edit")
+    {
+       $user = read_user_ById($pdo, $userId);
+       $firstName = $user->getFirstName();
+       $lastName = $user->getLastName();
+       $pass = $user->getPassword();
+       $email = $user->getEmail();
+       $isactive = $user->getIsActive();
+       $roleIndex = $user->getRoleId();
+       $submitButtonText = "Update";
+    }
+    
+    $firstNameErr = $lastNameErr = $emailErr = $passwordErr = "";    
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
         $firstName = test_input($_POST['firstname']);
@@ -45,7 +86,15 @@
         if (empty($firstNameErr) && empty($lastNameErr) && empty($passwordErr) && empty($emailErr))
         {
             $new_user = new User(0, $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password'], 1, date("Y-m-d H:i:s"), $_POST['role']);
-            echo create_user($pdo, $new_user);
+            if($operation == "Edit")
+            {
+                $new_user->setUserId($userId);
+                update_user($pdo, $new_user);
+            }
+            else 
+            {
+                echo create_user($pdo, $new_user);
+            }            
             $_POST = array();
             header("Location: Admin.php");
         }
@@ -81,8 +130,8 @@
                 <td>
                     First Name
                 </td>
-                <td>
-                    <input type='text' name='firstname' id='firstname' maxlength="100" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" />
+                <td>                    
+                    <input type='text' name='firstname' id='firstname' maxlength="100" value="<?php echo $firstName ?>" />
                     <span class="error">* <?php echo $firstNameErr;?></span>
                 </td>
             </tr>
@@ -91,7 +140,7 @@
                     Last Name
                 </td>
                 <td>
-                    <input type='text' name='lastname' id='lastname' maxlength="100" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" />
+                    <input type='text' name='lastname' id='lastname' maxlength="100" value="<?php echo $lastName ?>" />
                     <span class="error">* <?php echo $lastNameErr;?></span>
                 </td>
             </tr>
@@ -100,7 +149,7 @@
                     Email
                 </td>
                 <td>
-                    <input type='text' name='email' id='email' maxlength="150" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" />
+                    <input type='text' name='email' id='email' maxlength="150" value="<?php echo $email ?>" />
                     <span class="error">* <?php echo $emailErr;?></span>
                 </td>
             </tr>
@@ -109,7 +158,7 @@
                     Password
                 </td>
                 <td>
-                    <input type='password' name='password' id='password' maxlength="100" value="<?php echo isset($_POST['password']) ? $_POST['password'] : '' ?>" />
+                    <input type='password' name='password' id='password' maxlength="100" value="<?php echo $pass ?>" />
                     <span class="error">* <?php echo $passwordErr;?></span>
                 </td>
             </tr>
@@ -118,7 +167,7 @@
                     Is Active ?
                 </td>
                 <td>
-                    <input type="checkbox" name="IsActive" id="IsActive" checked="<?php echo isset($_POST['IsActive']) ? $_POST['IsActive'] : 'true' ?>">
+                    <input type="checkbox" name="IsActive" id="IsActive" checked="<?php echo $isactive ?>">
                 </td>
             </tr>
             <tr>
@@ -126,9 +175,7 @@
                     Role
                 </td>
                 <td>
-                    
-                    <?php 
-                        $selectedItem = isset($_POST['role']) ? $_POST['role'] : '';
+                    <?php                         
                         $result = read_roles($pdo);
                         $select = '<select name="role" id="role">';
                         foreach ($result as $role) 
@@ -148,7 +195,7 @@
             </tr>
             <tr>
                 <td align="center" colspan="2">
-                   <button id="createuser" type="submit">Create User</button>
+                   <button id="createuser" type="submit"><?php echo $submitButtonText ?></button>
                    <button id="reset" type="button" onclick="resetfields();">Reset</button>
                 </td>
             </tr>

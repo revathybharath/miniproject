@@ -1,8 +1,11 @@
 <div>
- 
-<h1>
-Users
-</h1>
+
+<table style="width: 100%">
+    <tr>
+        <td><h2>Manage Users</h2></td>
+        <td style="text-align: right"><h2><a href='../createuser.php'>Create New User</a></h2></td>
+    </tr>        
+</table>
 
 <?php if (empty($users)): ?>
     <p>No Users found.</p>
@@ -35,19 +38,21 @@ Users
             <td align="center"> 
                 <?php if ($user->getEmail()=='revathysaisindu@gmail.com'): ?>
                     <p>EDIT</p>
-                <?php else: ?>
-                    <a href="Admin.php">EDIT</a>
+                <?php else: 
+                    echo '<a href="createuser.php?ops=Edit&Id='.$user->getUserId().'">EDIT</a>';
+                    ?>
                 <?php endif; ?>
             </td>
             <td align="center"> 
                 <?php if ($user->getEmail()=='revathysaisindu@gmail.com'): ?>
                     <p>DELETE</p>
-                <?php else: ?>
-                    <a href="Admin.php">DELETE</a>
-                <?php endif; ?>
+                <?php else: 
+                    echo '<a href="createuser.php?ops=Delete&Id='.$user->getUserId().'">DELETE</a>';
+                endif;
+                ?>
             </td>
         </tr>
         <?php endforeach; ?>        
     </table>
-<?php endif; ?>    
+<?php endif; ?>
 </div>
