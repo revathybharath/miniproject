@@ -9,8 +9,8 @@
             <button type="submit" class="btn_email">Send</button>
         </form>
         <!-- End Subscription Form -->
-        <h4>Powered By The DevelopHers</h4>
-        © 2016 Osterley Guide ALL RIGHTS RESERVED
+        <h4>Powered By DevelopHers</h4>
+        © 2016 DevelopHers Guide ALL RIGHTS RESERVED
     </div>
   </body>
 </html>
