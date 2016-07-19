@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TTDIYLB blog</title>
+        <title>TTDOYLB blog</title>
         <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="img/favicn.ico" type="image" rel="icon"/> 
@@ -12,7 +12,7 @@
         <script type="text/javascript" src="js/jquery_notification_v.1.js"></script>
         <link href="css/jquery_notification.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body background="img/TTDIYLB_Background_trans.png">
+    <body background="img/TTDIYLB_Background_trans.png"style="background-repeat:repeat-n;width:100%; " />
         <div id="nav">
             <div id ="nav-wrapper">
                 <ul>
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div ID="logo">
-            <img  id="logoimg" src="img/TTDIYLB logo.png" style="background-repeat:repeat-y;width:70%;" align="center" />
+            <img  id="logoimg" src="img/TTDIYLB logo.png" style="background-repeat:repeat-y;width:40%;" align="center" />
         </div>
         <header>
             <table width="100%">
