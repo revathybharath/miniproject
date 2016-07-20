@@ -3,7 +3,7 @@ include("header.php"); ?>
 
 <html>
     <title>About Us</title>
-    <link href="css/blog-post.css" rel="stylesheet" type="text/css"/>
+    <link href="css/AboutUs.css" rel="stylesheet" type="text/css"/>
     <div ID="AboutUs">
         
 <body>
