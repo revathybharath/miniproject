@@ -3,7 +3,7 @@
     <hr>
     <div class="footer" align="center">  
         <!--Subscription Form -->
-        <form action="template/subcribe_form.php" method="post">
+        <form action="subscribe.php" method="post">
            <span>Please enter email to receive the latest posts</span>
             <input name="email" class="email" type="text">
             <button type="submit" class="btn_email">Send</button>
