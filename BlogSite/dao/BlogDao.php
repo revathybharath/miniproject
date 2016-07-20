@@ -61,7 +61,7 @@ function delete_user_byId($pdo, $userId)
 }
 
 function create_user_in_db($pdo, $user)
-{
+{   
     // Email address is a unique key in the user table. And email is will be used as login so duplicate is not allowed
     $query = $pdo->prepare("SELECT * FROM user WHERE EMAIL = :email");
     $query->execute(['email' => $user->getEmail()]);
@@ -70,10 +70,12 @@ function create_user_in_db($pdo, $user)
     if ((empty($userExist)) || (is_null($userExist))) 
     {
         $stmt = $pdo->prepare("INSERT INTO USER (FirstName, LastName, Email, Password, IsActive, RoleId) VALUES (:FirstName, :LastName, :Email, :Password, :IsActive, :RoleId)");
+        //hash password before inserting into db
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $stmt->bindValue(":FirstName", $user->getFirstName());
         $stmt->bindValue(":LastName", $user->getLastName());
         $stmt->bindValue(":Email", $user->getEmail());
-        $stmt->bindValue(":Password", $user->getPassword());
+        $stmt->bindValue(":Password", $password);
         $stmt->bindValue(":IsActive", $user->getIsActive());
         $stmt->bindValue(":RoleId", $user->getRoleId());
         $result = $stmt->execute();
@@ -162,11 +164,25 @@ function read_articles_from_db($pdo)
     return $articleObjArray;
 }
 
+function get_user_hash($pdo, $username){	
+
+		try {
+			$query = $pdo->prepare("SELECT password FROM user WHERE email = :email");
+			$query->execute(array('email' => $username));
+			
+			$row = $query->fetch();
+			return $row['password'];
+
+		} catch(PDOException $e) {
+		    echo '<p class="error">'.$e->getMessage().'</p>';
+		}
+	}
+
 function ValidateUserLogin($pdo, $userName, $password)
-{
-    $query = $pdo->prepare("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId WHERE usr.EMAIL = :email");
+{ $query = $pdo->prepare("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId WHERE usr.EMAIL = :email");
     $query->execute(['email' => $userName]);
     $result = $query->fetchAll();
+    $passwordhash = get_user_hash($pdo, $userName);
     
     if ((empty($result)) || (is_null($result))) 
     {
@@ -174,10 +190,9 @@ function ValidateUserLogin($pdo, $userName, $password)
         return -1;
     }
     else
-    {
-        foreach ($result as $user)
+    {    foreach ($result as $user)
         {
-            if ($user['Password'] != $password)
+            if (password_verify($password, $passwordhash)!= 1)
             {
                 //-2 means Invalid password.
                 return -2;
@@ -187,8 +202,8 @@ function ValidateUserLogin($pdo, $userName, $password)
                 //3 Loggin successful
                 return $user['UserId'];
             }
-        }
-    }
+        } 
+    } 
 }
 
 function create_category_in_db($pdo,$new_category)
