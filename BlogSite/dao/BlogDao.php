@@ -71,7 +71,7 @@ function create_user_in_db($pdo, $user)
     {
         $stmt = $pdo->prepare("INSERT INTO USER (FirstName, LastName, Email, Password, IsActive, RoleId) VALUES (:FirstName, :LastName, :Email, :Password, :IsActive, :RoleId)");
         //hash password before inserting into db
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $password = password_hash($user->getPassword(), PASSWORD_DEFAULT);
         $stmt->bindValue(":FirstName", $user->getFirstName());
         $stmt->bindValue(":LastName", $user->getLastName());
         $stmt->bindValue(":Email", $user->getEmail());
@@ -164,25 +164,27 @@ function read_articles_from_db($pdo)
     return $articleObjArray;
 }
 
-function get_user_hash($pdo, $username){	
+function get_user_hash($pdo, $username)
+{
+    try 
+    {
+        $query = $pdo->prepare("SELECT password FROM user WHERE email = :email");
+        $query->execute(array('email' => $username));
 
-		try {
-			$query = $pdo->prepare("SELECT password FROM user WHERE email = :email");
-			$query->execute(array('email' => $username));
-			
-			$row = $query->fetch();
-			return $row['password'];
-
-		} catch(PDOException $e) {
-		    echo '<p class="error">'.$e->getMessage().'</p>';
-		}
-	}
+        $row = $query->fetch();
+        return $row['password'];
+    } 
+    catch(PDOException $e) 
+    {
+        echo '<p class="error">'.$e->getMessage().'</p>';
+    }
+}
 
 function ValidateUserLogin($pdo, $userName, $password)
-{ $query = $pdo->prepare("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId WHERE usr.EMAIL = :email");
+{ 
+    $query = $pdo->prepare("SELECT usr.*, au.Name 'RoleName' FROM user usr JOIN authorisationrole au ON usr.RoleId = au.RoleId WHERE usr.EMAIL = :email");
     $query->execute(['email' => $userName]);
     $result = $query->fetchAll();
-    $passwordhash = get_user_hash($pdo, $userName);
     
     if ((empty($result)) || (is_null($result))) 
     {
@@ -192,8 +194,8 @@ function ValidateUserLogin($pdo, $userName, $password)
     else
     {    foreach ($result as $user)
         {
-            if (password_verify($password, $passwordhash)!= 1)
-            {
+            if (password_verify($password, $user['Password'])!= 1)
+            {                
                 //-2 means Invalid password.
                 return -2;
             }
@@ -208,18 +210,18 @@ function ValidateUserLogin($pdo, $userName, $password)
 
 function create_category_in_db($pdo,$new_category)
 {
-        $stmt = $pdo->prepare("INSERT INTO CATEGORY (Name, CategoryDescription) VALUES (:Name, :CategoryDescription)");
-        $stmt->bindValue(":Name", $new_category->getName());
-        $stmt->bindValue(":CategoryDescription", $new_category->getCategoryDescription());
-        $result = $stmt->execute();
-        if ($result == true)
-        {
-            return 'Category has been created!';
-        }
-        else
-        {
-            return 'Something went wrong';
-        }
+    $stmt = $pdo->prepare("INSERT INTO CATEGORY (Name, CategoryDescription) VALUES (:Name, :CategoryDescription)");
+    $stmt->bindValue(":Name", $new_category->getName());
+    $stmt->bindValue(":CategoryDescription", $new_category->getCategoryDescription());
+    $result = $stmt->execute();
+    if ($result == true)
+    {
+        return 'Category has been created!';
+    }
+    else
+    {
+        return 'Something went wrong';
+    }
 }
 
 function read_category_from_db($pdo)

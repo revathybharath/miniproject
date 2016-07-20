@@ -12,7 +12,7 @@
         <script type="text/javascript" src="js/jquery_notification_v.1.js"></script>
         <link href="css/jquery_notification.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body background="img/TTDIYLB_Background_trans.png"style="background-repeat:repeat-n;width:100%; " />
+    <body background="img/TTDIYLB_Background_trans.png"style="background-repeat:repeat-n;width:100%;">
         <div id="nav">
             <div id ="nav-wrapper">
                 <ul>
