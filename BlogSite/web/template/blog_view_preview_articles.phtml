@@ -10,7 +10,7 @@
         <?php
        foreach ($articles as $article) { ?>
            <tr>
-            <td>  <a href='/article.php?id=<?php echo $article -> getArticleId(); ?>'><?php echo $article -> getPostTitle(); ?> </a></td>
+            <td>  <a name='<?php echo $article -> getArticleId(); ?>' href='/article.php?id=<?php echo $article -> getArticleId(); ?>'><?php echo $article -> getPostTitle(); ?> </a></td>
             <td> <?php echo $article -> getAuthor(); ?> </td>
            </tr> 
        <?php }?>
