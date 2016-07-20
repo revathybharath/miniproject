@@ -1,6 +1,10 @@
 <?php
 include("header.php"); 
 ?>
+<html>
+    <title>Contact Us</title>
+    <h1>Contact Us</h1>
+    <h3>Please fill in the form below to send us an email.</h3>
 <form name="contactform" method="post" action="mail.php"> 
 <table width="450px">
 <tr>
@@ -55,6 +59,6 @@ include("header.php");
 </tr>
 </table>
 </form>
-
+</html>
 <?php include("Footer.php"); ?>
 
